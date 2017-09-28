@@ -1,0 +1,27 @@
+{
+  "app":[{
+    "name":"pzjr",
+    "script":"server.js",
+    "env":{
+      "COMMON_VARIABLE":true
+    },
+    "env_production":{
+      "NODE_ENV":"production"
+    }
+  }],
+  "deploy":{
+    "production":{
+      "user":"luyu",
+      "host":["39.108.214.143"],
+      "port":"2222",
+      "ref":"origin/master",
+      "repo":"git@gitee.com:luyu19921025/test.git",
+      "path":"/home/luyu/www/pzjr/production",
+      "ssh_options":"StrictHostKeyChecking=no",
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.json --env production",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
